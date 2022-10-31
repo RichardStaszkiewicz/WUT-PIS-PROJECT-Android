@@ -1,0 +1,19 @@
+version: "3"
+services:
+ SonarQube:
+  image: sonarqube
+  environment:
+  SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+  SONAR_JDBC_USERNAME: sonartest
+  SONAR_JDBC_PASSWORD: sonartest
+  volumes:
+   - SonarQube_data:/opt/SonarQube/data
+   - SonarQube_conf:/opt/SonarQube/conf
+   - SonarQube_extensions:/opt/SonarQube/extensions
+   - SonarQube_logs:/opt/SonarQube/logs
+  ports:
+   - "9000:9000"
+volumes:
+  SonarQube_data:
+  SonarQube_extensions:
+  SonarQube_logs:
