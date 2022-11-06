@@ -1,11 +1,16 @@
 version: "3"
 services:
  SonarQube:
+  depends_on:
+  - db
   image: sonarqube
   environment:
-  SONAR_JDBC_URL: jdbc:sqllite://db:3306/sonar
-  SONAR_JDBC_USERNAME: sonartest
-  SONAR_JDBC_PASSWORD: sonartest
+  SONARQUBE_JDBC_URL: "jdbc:mysql://localhost:3306/sonar"
+  SONARQUBE_JDBC_USERNAME: sonar
+  SONARQUBE_JDBC_PASSWORD: sonar
+  MYSQL_ROOT_PASSWORD: password
+  MYSQL_USER: sonar
+  MYSQL_PASSWORD: sonar
   volumes:
    - /opt/SonarQube/data:/opt/SonarQube/data
    - /opt/SonarQube/conf:/opt/SonarQube/conf
