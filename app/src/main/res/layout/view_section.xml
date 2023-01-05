@@ -45,14 +45,15 @@
 				android:layout_weight="1" />
 
 			<ImageView
-				android:contentDescription="@string/open"
 				android:id="@+id/section_icon"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				app:srcCompat="@drawable/ic_arrow_forward"
 				android:background="?attr/selectableItemBackgroundBorderless"
 				android:clickable="true"
-				android:focusable="true" />
+				android:contentDescription="@string/open"
+				android:focusable="true"
+				app:tint="?android:textColor"
+				app:srcCompat="@drawable/ic_arrow_forward" />
 		</LinearLayout>
 
 		<ListView

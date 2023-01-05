@@ -13,6 +13,10 @@
 		<item name="android:statusBarColor">?attr/colorTertiary</item>
 		<!-- Customize your theme here. -->
 		<item name="android:fontFamily">sans-serif</item>
+		<item name="colorPrimarySurface">@color/colorSurface1</item>
+		<item name="colorSurface">@color/colorSurface5</item>
+		<item name="colorSecondaryContainer">@color/colorSecondaryContainer</item>
+		<item name="android:textColor">@color/black</item>
 	</style>
 
 	<style name="Theme.Android.button" parent="Theme.Android">
@@ -34,7 +38,7 @@
 		<item name="android:padding">12dp</item>
 		<item name="android:background">@drawable/edit_button</item>
 		<item name="backgroundTint">@null</item>
-		<item name="iconTint">@color/colorPrimary</item>
+		<item name="iconTint">?colorPrimary</item>
 	</style>
 
 	<style name="Theme.Android.editText" parent="Theme.Android">
