@@ -40,6 +40,6 @@ public class SectionViewModel extends ViewModel {
 				.subSections(List.of(section0, section1, section2))
 				.build();
 
-		sectionLiveData.setValue(section3);
+		sectionLiveData.setValue(section2);
 	}
 }

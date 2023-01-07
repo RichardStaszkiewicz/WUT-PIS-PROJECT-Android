@@ -15,6 +15,7 @@ import com.example.android.databinding.ActivitySectionBinding;
 import com.example.android.ui.ConceptActivity;
 import com.example.android.ui.exam.ExamActivity;
 import com.example.android.ui.exam.State;
+import com.example.android.util.ConceptsViewModelFactory;
 import com.example.model.Concept;
 import com.example.model.Section;
 import java.util.List;
@@ -41,12 +42,14 @@ public class SectionActivity extends AppCompatActivity {
 		this.testButton = binding.sectionTestButton;
 		this.studyButton = binding.sectionExamButton;
 
+		var sectionId = getIntent().getIntExtra("sectionId", 0);
+
 		new ViewModelProvider(this)
 				.get(SectionViewModel.class)
 				.getSectionLiveData()
 				.observe(this, this::setSection);
 
-		new ViewModelProvider(this)
+		new ViewModelProvider(this, new ConceptsViewModelFactory(sectionId))
 				.get(ConceptsViewModel.class)
 				.getConceptsLiveData()
 				.observe(this, this::setConcepts);

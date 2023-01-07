@@ -56,7 +56,9 @@ public class SectionRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
 		});
 
 		viewHolder.sectionIcon.setOnClickListener(v -> {
+			Log.d("Test", "sectionID: " + section.getId());
 			var intent = new Intent(context, SectionActivity.class);
+			intent.putExtra("sectionId", section.getId());
 			context.startActivity(intent);
 		});
 

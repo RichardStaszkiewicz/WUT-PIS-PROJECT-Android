@@ -7,13 +7,11 @@ import com.example.model.Concept;
 import java.util.List;
 
 public class ConceptsViewModel extends ViewModel {
-
-
-	// TODO: Create factory and pass sectionId value using factory to constructor
-	private final int sectionId = 1;
+	private int sectionId;
 	private final MutableLiveData<List<Concept>> conceptsLiveData = new MutableLiveData<>();
 
-	public ConceptsViewModel() {
+	public ConceptsViewModel(int sectionId) {
+		this.sectionId = sectionId;
 		populateConcepts();
 	}
 
@@ -23,7 +21,7 @@ public class ConceptsViewModel extends ViewModel {
 
 	private void populateConcepts() {
 		var concept1 = Concept.builder()
-				.keyPhrase("Sieć")
+				.keyPhrase("Sieć : " + sectionId)
 				.summary("Summary")
 				.build();
 		var concept2 = Concept.builder()
