@@ -37,8 +37,7 @@
 				android:layout_height="wrap_content"
 				android:text="@string/section"
 				android:textAppearance="@style/title_medium"
-				android:textStyle="bold"
-				android:textColor="#000" />
+				android:textStyle="bold" />
 
 			<Space
 				android:layout_width="0dp"
@@ -51,6 +50,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				app:srcCompat="@drawable/ic_arrow_forward"
+				app:tint="?android:textColor"
 				android:background="?attr/selectableItemBackgroundBorderless"
 				android:clickable="true"
 				android:focusable="true" />
