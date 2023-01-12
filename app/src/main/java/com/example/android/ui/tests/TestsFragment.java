@@ -1,6 +1,7 @@
 package com.example.android.ui.tests;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.android.databinding.FragmentTestsBinding;
+import com.example.android.ui.menu.SectionRecyclerViewAdapter;
 
 public class TestsFragment extends Fragment {
 
@@ -22,8 +26,21 @@ public class TestsFragment extends Fragment {
 		binding = FragmentTestsBinding.inflate(inflater, container, false);
 		View root = binding.getRoot();
 
-		final TextView textView = binding.textTests;
-		testsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+		var progressBar = binding.progressBarTests;
+		var recyclerView = binding.testsRecyclerView;
+		var recyclerViewAdapter = new TestsRecyclerViewAdapter(this.getContext());
+
+		recyclerView.setHasFixedSize(true);
+
+		var manager = new LinearLayoutManager(this.getContext());
+		recyclerView.setLayoutManager(manager);
+
+		recyclerView.setAdapter(recyclerViewAdapter);
+
+		testsViewModel.getTestsLiveData().observe(getViewLifecycleOwner(), tests -> {
+			progressBar.setVisibility(View.GONE);
+			recyclerViewAdapter.setTests(tests);
+		});
 		return root;
 	}
 

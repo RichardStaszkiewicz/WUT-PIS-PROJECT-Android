@@ -16,8 +16,13 @@ import com.example.model.exam.TruthOrFalse;
 import com.example.model.exam.answer.BlankAnswer;
 import com.example.model.exam.answer.ChoiceAnswer;
 import com.example.model.exam.answer.ListAnswer;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -104,7 +109,7 @@ public class ExercisesViewModel extends ViewModel {
 	}
 
 	private static List<Exercise> getFallbackExercises() {
-		return List.of(
+		List<Exercise> exercises =  List.of(
 				Choice.builder()
 						.question("Czemu służy podział na poziomy agregacji (aggregation levels) w adresie IP v.6?")
 						.correctAnswer("zmniejszeniu liczby bitów analizowanych przez routery")
@@ -166,5 +171,8 @@ public class ExercisesViewModel extends ViewModel {
 						))
 						.build()
 		);
+		List<Exercise> modifiableList = new ArrayList<>(exercises);
+		Collections.shuffle(modifiableList);
+		return modifiableList.subList(0, 3);
 	}
 }
